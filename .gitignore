@@ -1,0 +1,6 @@
+*.docx
+*.zip
+*.csv
+.DS_Store
+**/.ipynb_checkpoints
+DSM_StepInstructions/
