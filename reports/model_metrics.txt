@@ -1,0 +1,364 @@
+# This will train until valid-rmse hasn't improved in 10 rounds.
+
+md = [6]
+lr = [0.1, 0.3]
+mcw = [20, 25, 30]
+for m in md:
+    for l in lr:
+        for n in mcw:
+            t0 = datetime.now()
+            xgb_pars = {'min_child_weight': n, 'eta': l, 'colsample_bytree': 0.9, 
+                        'max_depth': m, 'subsample': 0.9, 'lambda': 1., 'nthread': -1, 
+                        'booster' : 'gbtree', 'silent': 1, 'eval_metric': 'rmse', 'objective': 'reg:squarederror'}
+            model = xgb.train(xgb_pars, xg_train, 50, watchlist, early_stopping_rounds=10,
+                  maximize=False, verbose_eval=1)
+
+
+[13:53:51] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:6.29412	valid-rmse:6.28907
+[1]	train-rmse:5.66845	valid-rmse:5.66328
+[2]	train-rmse:5.10568	valid-rmse:5.10034
+[3]	train-rmse:4.59951	valid-rmse:4.59404
+[4]	train-rmse:4.14442	valid-rmse:4.13897
+[5]	train-rmse:3.73525	valid-rmse:3.72992
+[6]	train-rmse:3.36752	valid-rmse:3.36210
+[7]	train-rmse:3.03710	valid-rmse:3.03173
+[8]	train-rmse:2.74036	valid-rmse:2.73511
+[9]	train-rmse:2.47401	valid-rmse:2.46894
+[10]	train-rmse:2.23497	valid-rmse:2.23010
+[11]	train-rmse:2.02073	valid-rmse:2.01619
+[12]	train-rmse:1.82876	valid-rmse:1.82431
+[13]	train-rmse:1.65690	valid-rmse:1.65279
+[14]	train-rmse:1.50329	valid-rmse:1.49965
+[15]	train-rmse:1.36624	valid-rmse:1.36298
+[16]	train-rmse:1.24420	valid-rmse:1.24146
+[17]	train-rmse:1.13574	valid-rmse:1.13351
+[18]	train-rmse:1.03933	valid-rmse:1.03765
+[19]	train-rmse:0.95413	valid-rmse:0.95309
+[20]	train-rmse:0.87876	valid-rmse:0.87834
+[21]	train-rmse:0.81279	valid-rmse:0.81297
+[22]	train-rmse:0.75489	valid-rmse:0.75572
+[23]	train-rmse:0.70437	valid-rmse:0.70591
+[24]	train-rmse:0.66064	valid-rmse:0.66288
+[25]	train-rmse:0.62267	valid-rmse:0.62572
+[26]	train-rmse:0.58974	valid-rmse:0.59342
+[27]	train-rmse:0.56147	valid-rmse:0.56581
+[28]	train-rmse:0.53757	valid-rmse:0.54267
+[29]	train-rmse:0.51721	valid-rmse:0.52293
+[30]	train-rmse:0.50014	valid-rmse:0.50645
+[31]	train-rmse:0.48553	valid-rmse:0.49238
+[32]	train-rmse:0.47319	valid-rmse:0.48064
+[33]	train-rmse:0.46262	valid-rmse:0.47069
+[34]	train-rmse:0.45391	valid-rmse:0.46231
+[35]	train-rmse:0.44661	valid-rmse:0.45544
+[36]	train-rmse:0.44016	valid-rmse:0.44948
+[37]	train-rmse:0.43503	valid-rmse:0.44466
+[38]	train-rmse:0.43083	valid-rmse:0.44075
+[39]	train-rmse:0.42689	valid-rmse:0.43712
+[40]	train-rmse:0.42318	valid-rmse:0.43376
+[41]	train-rmse:0.42032	valid-rmse:0.43121
+[42]	train-rmse:0.41813	valid-rmse:0.42916
+[43]	train-rmse:0.41617	valid-rmse:0.42749
+[44]	train-rmse:0.41398	valid-rmse:0.42560
+[45]	train-rmse:0.41230	valid-rmse:0.42413
+[46]	train-rmse:0.41106	valid-rmse:0.42312
+[47]	train-rmse:0.40953	valid-rmse:0.42198
+[48]	train-rmse:0.40848	valid-rmse:0.42111
+[49]	train-rmse:0.40751	valid-rmse:0.42048
+[13:53:55] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:6.29412	valid-rmse:6.28907
+[1]	train-rmse:5.66845	valid-rmse:5.66328
+[2]	train-rmse:5.10568	valid-rmse:5.10034
+[3]	train-rmse:4.59951	valid-rmse:4.59404
+[4]	train-rmse:4.14442	valid-rmse:4.13897
+[5]	train-rmse:3.73525	valid-rmse:3.72992
+[6]	train-rmse:3.36752	valid-rmse:3.36210
+[7]	train-rmse:3.03710	valid-rmse:3.03173
+[8]	train-rmse:2.74036	valid-rmse:2.73512
+[9]	train-rmse:2.47401	valid-rmse:2.46895
+[10]	train-rmse:2.23497	valid-rmse:2.23011
+[11]	train-rmse:2.02074	valid-rmse:2.01619
+[12]	train-rmse:1.82877	valid-rmse:1.82431
+[13]	train-rmse:1.65691	valid-rmse:1.65283
+[14]	train-rmse:1.50330	valid-rmse:1.49963
+[15]	train-rmse:1.36626	valid-rmse:1.36295
+[16]	train-rmse:1.24423	valid-rmse:1.24140
+[17]	train-rmse:1.13577	valid-rmse:1.13344
+[18]	train-rmse:1.03937	valid-rmse:1.03759
+[19]	train-rmse:0.95418	valid-rmse:0.95301
+[20]	train-rmse:0.87881	valid-rmse:0.87829
+[21]	train-rmse:0.81279	valid-rmse:0.81290
+[22]	train-rmse:0.75489	valid-rmse:0.75565
+[23]	train-rmse:0.70441	valid-rmse:0.70575
+[24]	train-rmse:0.66070	valid-rmse:0.66270
+[25]	train-rmse:0.62263	valid-rmse:0.62528
+[26]	train-rmse:0.58994	valid-rmse:0.59339
+[27]	train-rmse:0.56172	valid-rmse:0.56579
+[28]	train-rmse:0.53786	valid-rmse:0.54263
+[29]	train-rmse:0.51750	valid-rmse:0.52290
+[30]	train-rmse:0.50021	valid-rmse:0.50609
+[31]	train-rmse:0.48579	valid-rmse:0.49224
+[32]	train-rmse:0.47359	valid-rmse:0.48051
+[33]	train-rmse:0.46310	valid-rmse:0.47084
+[34]	train-rmse:0.45457	valid-rmse:0.46263
+[35]	train-rmse:0.44724	valid-rmse:0.45564
+[36]	train-rmse:0.44075	valid-rmse:0.44974
+[37]	train-rmse:0.43549	valid-rmse:0.44484
+[38]	train-rmse:0.43101	valid-rmse:0.44078
+[39]	train-rmse:0.42723	valid-rmse:0.43725
+[40]	train-rmse:0.42372	valid-rmse:0.43402
+[41]	train-rmse:0.42095	valid-rmse:0.43153
+[42]	train-rmse:0.41878	valid-rmse:0.42951
+[43]	train-rmse:0.41693	valid-rmse:0.42786
+[44]	train-rmse:0.41487	valid-rmse:0.42604
+[45]	train-rmse:0.41350	valid-rmse:0.42482
+[46]	train-rmse:0.41213	valid-rmse:0.42367
+[47]	train-rmse:0.41097	valid-rmse:0.42268
+[48]	train-rmse:0.40994	valid-rmse:0.42172
+[49]	train-rmse:0.40894	valid-rmse:0.42093
+[13:54:00] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:6.29412	valid-rmse:6.28908
+[1]	train-rmse:5.66845	valid-rmse:5.66329
+[2]	train-rmse:5.10568	valid-rmse:5.10034
+[3]	train-rmse:4.59951	valid-rmse:4.59404
+[4]	train-rmse:4.14442	valid-rmse:4.13897
+[5]	train-rmse:3.73526	valid-rmse:3.72991
+[6]	train-rmse:3.36753	valid-rmse:3.36210
+[7]	train-rmse:3.03711	valid-rmse:3.03171
+[8]	train-rmse:2.74037	valid-rmse:2.73509
+[9]	train-rmse:2.47402	valid-rmse:2.46892
+[10]	train-rmse:2.23499	valid-rmse:2.23010
+[11]	train-rmse:2.02075	valid-rmse:2.01620
+[12]	train-rmse:1.82879	valid-rmse:1.82431
+[13]	train-rmse:1.65693	valid-rmse:1.65282
+[14]	train-rmse:1.50333	valid-rmse:1.49962
+[15]	train-rmse:1.36629	valid-rmse:1.36293
+[16]	train-rmse:1.24427	valid-rmse:1.24139
+[17]	train-rmse:1.13583	valid-rmse:1.13346
+[18]	train-rmse:1.03946	valid-rmse:1.03760
+[19]	train-rmse:0.95428	valid-rmse:0.95299
+[20]	train-rmse:0.87890	valid-rmse:0.87827
+[21]	train-rmse:0.81294	valid-rmse:0.81294
+[22]	train-rmse:0.75509	valid-rmse:0.75573
+[23]	train-rmse:0.70456	valid-rmse:0.70583
+[24]	train-rmse:0.66070	valid-rmse:0.66265
+[25]	train-rmse:0.62272	valid-rmse:0.62548
+[26]	train-rmse:0.58988	valid-rmse:0.59325
+[27]	train-rmse:0.56199	valid-rmse:0.56608
+[28]	train-rmse:0.53807	valid-rmse:0.54294
+[29]	train-rmse:0.51738	valid-rmse:0.52285
+[30]	train-rmse:0.50033	valid-rmse:0.50628
+[31]	train-rmse:0.48596	valid-rmse:0.49247
+[32]	train-rmse:0.47351	valid-rmse:0.48061
+[33]	train-rmse:0.46334	valid-rmse:0.47086
+[34]	train-rmse:0.45445	valid-rmse:0.46253
+[35]	train-rmse:0.44710	valid-rmse:0.45553
+[36]	train-rmse:0.44065	valid-rmse:0.44943
+[37]	train-rmse:0.43552	valid-rmse:0.44461
+[38]	train-rmse:0.43104	valid-rmse:0.44048
+[39]	train-rmse:0.42723	valid-rmse:0.43695
+[40]	train-rmse:0.42380	valid-rmse:0.43374
+[41]	train-rmse:0.42101	valid-rmse:0.43132
+[42]	train-rmse:0.41870	valid-rmse:0.42929
+[43]	train-rmse:0.41677	valid-rmse:0.42752
+[44]	train-rmse:0.41508	valid-rmse:0.42607
+[45]	train-rmse:0.41364	valid-rmse:0.42474
+[46]	train-rmse:0.41208	valid-rmse:0.42340
+[47]	train-rmse:0.41083	valid-rmse:0.42226
+[48]	train-rmse:0.40970	valid-rmse:0.42137
+[49]	train-rmse:0.40848	valid-rmse:0.42041
+[13:54:05] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:4.90462	valid-rmse:4.89928
+[1]	train-rmse:3.44907	valid-rmse:3.44386
+[2]	train-rmse:2.43575	valid-rmse:2.43097
+[3]	train-rmse:1.73413	valid-rmse:1.73015
+[4]	train-rmse:1.25393	valid-rmse:1.25110
+[5]	train-rmse:0.93114	valid-rmse:0.93011
+[6]	train-rmse:0.72006	valid-rmse:0.72101
+[7]	train-rmse:0.58856	valid-rmse:0.59175
+[8]	train-rmse:0.51099	valid-rmse:0.51616
+[9]	train-rmse:0.46715	valid-rmse:0.47404
+[10]	train-rmse:0.44254	valid-rmse:0.45060
+[11]	train-rmse:0.42886	valid-rmse:0.43815
+[12]	train-rmse:0.41961	valid-rmse:0.43008
+[13]	train-rmse:0.41434	valid-rmse:0.42521
+[14]	train-rmse:0.41120	valid-rmse:0.42248
+[15]	train-rmse:0.40893	valid-rmse:0.42063
+[16]	train-rmse:0.40732	valid-rmse:0.41941
+[17]	train-rmse:0.40536	valid-rmse:0.41815
+[18]	train-rmse:0.40240	valid-rmse:0.41617
+[19]	train-rmse:0.40079	valid-rmse:0.41484
+[20]	train-rmse:0.39968	valid-rmse:0.41414
+[21]	train-rmse:0.39813	valid-rmse:0.41324
+[22]	train-rmse:0.39703	valid-rmse:0.41275
+[23]	train-rmse:0.39571	valid-rmse:0.41200
+[24]	train-rmse:0.39457	valid-rmse:0.41119
+[25]	train-rmse:0.39399	valid-rmse:0.41069
+[26]	train-rmse:0.39290	valid-rmse:0.40987
+[27]	train-rmse:0.39221	valid-rmse:0.40963
+[28]	train-rmse:0.39110	valid-rmse:0.40895
+[29]	train-rmse:0.38985	valid-rmse:0.40901
+[30]	train-rmse:0.38944	valid-rmse:0.40884
+[31]	train-rmse:0.38881	valid-rmse:0.40840
+[32]	train-rmse:0.38806	valid-rmse:0.40854
+[33]	train-rmse:0.38744	valid-rmse:0.40829
+[34]	train-rmse:0.38653	valid-rmse:0.40806
+[35]	train-rmse:0.38585	valid-rmse:0.40800
+[36]	train-rmse:0.38519	valid-rmse:0.40764
+[37]	train-rmse:0.38431	valid-rmse:0.40748
+[38]	train-rmse:0.38380	valid-rmse:0.40694
+[39]	train-rmse:0.38310	valid-rmse:0.40669
+[40]	train-rmse:0.38288	valid-rmse:0.40641
+[41]	train-rmse:0.38252	valid-rmse:0.40671
+[42]	train-rmse:0.38217	valid-rmse:0.40662
+[43]	train-rmse:0.38110	valid-rmse:0.40637
+[44]	train-rmse:0.38050	valid-rmse:0.40651
+[45]	train-rmse:0.38010	valid-rmse:0.40644
+[46]	train-rmse:0.37978	valid-rmse:0.40643
+[47]	train-rmse:0.37934	valid-rmse:0.40673
+[48]	train-rmse:0.37887	valid-rmse:0.40660
+[49]	train-rmse:0.37838	valid-rmse:0.40631
+[13:54:10] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:4.90462	valid-rmse:4.89928
+[1]	train-rmse:3.44907	valid-rmse:3.44386
+[2]	train-rmse:2.43575	valid-rmse:2.43097
+[3]	train-rmse:1.73415	valid-rmse:1.73015
+[4]	train-rmse:1.25395	valid-rmse:1.25112
+[5]	train-rmse:0.93117	valid-rmse:0.93000
+[6]	train-rmse:0.72010	valid-rmse:0.72088
+[7]	train-rmse:0.58870	valid-rmse:0.59188
+[8]	train-rmse:0.51107	valid-rmse:0.51607
+[9]	train-rmse:0.46729	valid-rmse:0.47418
+[10]	train-rmse:0.44342	valid-rmse:0.45163
+[11]	train-rmse:0.43013	valid-rmse:0.43892
+[12]	train-rmse:0.42157	valid-rmse:0.43122
+[13]	train-rmse:0.41665	valid-rmse:0.42687
+[14]	train-rmse:0.41261	valid-rmse:0.42352
+[15]	train-rmse:0.40995	valid-rmse:0.42162
+[16]	train-rmse:0.40754	valid-rmse:0.41974
+[17]	train-rmse:0.40547	valid-rmse:0.41860
+[18]	train-rmse:0.40266	valid-rmse:0.41657
+[19]	train-rmse:0.40128	valid-rmse:0.41576
+[20]	train-rmse:0.40018	valid-rmse:0.41479
+[21]	train-rmse:0.39854	valid-rmse:0.41341
+[22]	train-rmse:0.39696	valid-rmse:0.41198
+[23]	train-rmse:0.39636	valid-rmse:0.41152
+[24]	train-rmse:0.39532	valid-rmse:0.41076
+[25]	train-rmse:0.39449	valid-rmse:0.41021
+[26]	train-rmse:0.39373	valid-rmse:0.40946
+[27]	train-rmse:0.39304	valid-rmse:0.40926
+[28]	train-rmse:0.39202	valid-rmse:0.40919
+[29]	train-rmse:0.39091	valid-rmse:0.40834
+[30]	train-rmse:0.39036	valid-rmse:0.40799
+[31]	train-rmse:0.38969	valid-rmse:0.40801
+[32]	train-rmse:0.38891	valid-rmse:0.40831
+[33]	train-rmse:0.38804	valid-rmse:0.40818
+[34]	train-rmse:0.38753	valid-rmse:0.40767
+[35]	train-rmse:0.38681	valid-rmse:0.40764
+[36]	train-rmse:0.38608	valid-rmse:0.40711
+[37]	train-rmse:0.38570	valid-rmse:0.40701
+[38]	train-rmse:0.38516	valid-rmse:0.40700
+[39]	train-rmse:0.38463	valid-rmse:0.40695
+[40]	train-rmse:0.38427	valid-rmse:0.40731
+[41]	train-rmse:0.38398	valid-rmse:0.40751
+[42]	train-rmse:0.38345	valid-rmse:0.40704
+[43]	train-rmse:0.38307	valid-rmse:0.40716
+[44]	train-rmse:0.38277	valid-rmse:0.40713
+[45]	train-rmse:0.38239	valid-rmse:0.40686
+[46]	train-rmse:0.38218	valid-rmse:0.40675
+[47]	train-rmse:0.38195	valid-rmse:0.40675
+[48]	train-rmse:0.38155	valid-rmse:0.40726
+[49]	train-rmse:0.38094	valid-rmse:0.40710
+[13:54:14] WARNING: /Users/travis/build/dmlc/xgboost/src/learner.cc:541: 
+Parameters: { silent } might not be used.
+
+  This may not be accurate due to some parameters are only used in language bindings but
+  passed down to XGBoost core.  Or some parameters are not used but slip through this
+  verification. Please open an issue if you find above cases.
+
+
+[0]	train-rmse:4.90463	valid-rmse:4.89928
+[1]	train-rmse:3.44907	valid-rmse:3.44386
+[2]	train-rmse:2.43575	valid-rmse:2.43095
+[3]	train-rmse:1.73417	valid-rmse:1.73011
+[4]	train-rmse:1.25398	valid-rmse:1.25106
+[5]	train-rmse:0.93126	valid-rmse:0.92995
+[6]	train-rmse:0.72025	valid-rmse:0.72065
+[7]	train-rmse:0.58887	valid-rmse:0.59157
+[8]	train-rmse:0.51126	valid-rmse:0.51572
+[9]	train-rmse:0.46752	valid-rmse:0.47374
+[10]	train-rmse:0.44377	valid-rmse:0.45151
+[11]	train-rmse:0.43040	valid-rmse:0.43864
+[12]	train-rmse:0.42192	valid-rmse:0.43090
+[13]	train-rmse:0.41508	valid-rmse:0.42496
+[14]	train-rmse:0.41148	valid-rmse:0.42181
+[15]	train-rmse:0.40932	valid-rmse:0.41987
+[16]	train-rmse:0.40765	valid-rmse:0.41825
+[17]	train-rmse:0.40619	valid-rmse:0.41698
+[18]	train-rmse:0.40420	valid-rmse:0.41534
+[19]	train-rmse:0.40234	valid-rmse:0.41456
+[20]	train-rmse:0.40122	valid-rmse:0.41384
+[21]	train-rmse:0.40024	valid-rmse:0.41301
+[22]	train-rmse:0.39858	valid-rmse:0.41175
+[23]	train-rmse:0.39763	valid-rmse:0.41098
+[24]	train-rmse:0.39660	valid-rmse:0.41020
+[25]	train-rmse:0.39529	valid-rmse:0.40921
+[26]	train-rmse:0.39465	valid-rmse:0.40892
+[27]	train-rmse:0.39378	valid-rmse:0.40814
+[28]	train-rmse:0.39264	valid-rmse:0.40813
+[29]	train-rmse:0.39184	valid-rmse:0.40814
+[30]	train-rmse:0.39121	valid-rmse:0.40778
+[31]	train-rmse:0.39034	valid-rmse:0.40719
+[32]	train-rmse:0.38971	valid-rmse:0.40718
+[33]	train-rmse:0.38911	valid-rmse:0.40689
+[34]	train-rmse:0.38862	valid-rmse:0.40709
+[35]	train-rmse:0.38822	valid-rmse:0.40682
+[36]	train-rmse:0.38739	valid-rmse:0.40633
+[37]	train-rmse:0.38713	valid-rmse:0.40618
+[38]	train-rmse:0.38658	valid-rmse:0.40564
+[39]	train-rmse:0.38610	valid-rmse:0.40560
+[40]	train-rmse:0.38564	valid-rmse:0.40547
+[41]	train-rmse:0.38536	valid-rmse:0.40573
+[42]	train-rmse:0.38466	valid-rmse:0.40512
+[43]	train-rmse:0.38396	valid-rmse:0.40474
+[44]	train-rmse:0.38366	valid-rmse:0.40463
+[45]	train-rmse:0.38337	valid-rmse:0.40467
+[46]	train-rmse:0.38305	valid-rmse:0.40459
+[47]	train-rmse:0.38275	valid-rmse:0.40460
+[48]	train-rmse:0.38254	valid-rmse:0.40474
+[49]	train-rmse:0.38205	valid-rmse:0.40458
